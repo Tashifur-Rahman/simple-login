@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login & Sign Up</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+<h1>hello</h1>
+  <div class="container">
+    <div class="form-box">
+      <h2 id="form-title">Login</h2>
+      <form id="auth-form">
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" required />
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" required />
+        </div>
+        <div id="signup-extra" class="input-group hidden">
+          <label>Confirm Password</label>
+          <input type="password" required />
+        </div>
+        <button type="submit" class="btn">Submit</button>
+        <p class="toggle-text">
+          Don't have an account? <a href="#" id="toggle-link">Sign up</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const toggleLink = document.getElementById('toggle-link');
+    const formTitle = document.getElementById('form-title');
+    const signupExtra = document.getElementById('signup-extra');
+    const toggleText = document.querySelector('.toggle-text');
+
+    let isLogin = true;
+
+    toggleLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      isLogin = !isLogin;
+      formTitle.textContent = isLogin ? 'Login' : 'Sign Up';
+      signupExtra.classList.toggle('hidden');
+      toggleText.innerHTML = isLogin
+        ? `Don't have an account? <a href="#" id="toggle-link">Sign up</a>`
+        : `Already have an account? <a href="#" id="toggle-link">Login</a>`;
+    });
+  </script>
+</body>
+</html>
